@@ -1,29 +1,28 @@
 %========================================================================
-% Este programa lleva a cabo el m閠odo
+% Este programa lleva a cabo el m茅todo
 % L-BFGS
-% para obtener la soluci髇 al sistema de ecuaciones 
+% para obtener la soluci贸n al sistema de ecuaciones 
 % A*x = b
-% Curso An醠isis Aplicado
+% Curso An谩lisis Aplicado
 % Abril 2015
-% Carlos Dioney Blanco Gonz醠ez 
+% Carlos Dioney Blanco Gonz谩lez 
 %========================================================================
 
 function sol = L_BFGS( fun, x0, maxiter, m )
 
 %========================================================================
 % INPUT:
-%  fun      - La funci髇 a minimizar
-%  x        - El punto inicial
-% maxiter   - M醲imo de iteraciones
-%  m        - Tama駉 LBFGS
+%  fun      - La funci贸n a minimizar
+%  x0       - El punto inicial
+% maxiter   - M谩ximo de iteraciones
+%  m        - Tama帽o LBFGS
 %
 % OUTPUT:
-%  sol     - Soluci髇 del problema
-%  i       - N鷐ero total de iteraciones
+%  sol     - Soluci贸n del problema
 %========================================================================
 tol = 1e-8;               % tolerancia
-i   = 0;                  % iniciamos nuestro contador
-f0  = feval(fun, x0);     % funci髇 y gradiente en el punto inicial
+i   = 0;                  % contador
+f0  = feval(fun, x0);     % funci贸n y gradiente en el punto inicial
 g0  = diffgrad( x0, fun);
 n   = length(x0);       
 S   = zeros( n, m);       % matrices S, Y y Rho para calcular H*g
@@ -55,7 +54,7 @@ while (norma > tol) && (i < maxiter) && (curv > 0)
     if   i > m
         
         % Actualizamos S, Y que entran a L-BFGS 
-        % Notar que s髄o cambiamos una columna ( idx) en cada iteraci髇
+        % Notar que s贸lo cambiamos una columna ( idx) en cada iteraci贸n
         idx = mod(i,m);
         
         if idx == 0
@@ -93,4 +92,4 @@ while (norma > tol) && (i < maxiter) && (curv > 0)
     i = i + 1;
 end
 
-sol = x;  % Regresamos la soluci髇
+sol = x;  % Regresamos la soluci贸n
