@@ -1,5 +1,5 @@
-function [f, g, H] = rosen(x);
-%function [f, g ] = rosen(x);
+function [f, g, H] = rosen(x)
+
 f = 100*( x(2) - x(1)^2 )^2  +  ( 1 - x(1) )^2 ;
 
 g = [ -400*( x(2) - x(1)^2 )  * x(1) - 2 * ( 1 - x(1) ) ;
